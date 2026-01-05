@@ -13,7 +13,7 @@ jobs:
           TELE_TOKEN: ${{ secrets.TELE_TOKEN }}
           TELE_ID: ${{ secrets.TELE_ID }}
         run: |
-          pip install requests beautifulsoup4
+          pip install requests beautifulsoup4 pytz
           python bot.py
       - name: Save
         run: |
