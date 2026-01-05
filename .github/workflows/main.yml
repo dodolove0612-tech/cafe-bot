@@ -1,0 +1,24 @@
+name: Cafe-Bot
+on:
+  schedule:
+    - cron: '*/5 * * * *' # 5분마다 실행
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run
+        env:
+          TELE_TOKEN: ${{ secrets.TELE_TOKEN }}
+          TELE_ID: ${{ secrets.TELE_ID }}
+        run: |
+          pip install requests beautifulsoup4
+          python bot.py
+      - name: Save
+        run: |
+          git config --global user.name 'Bot'
+          git config --global user.email 'bot@bot.com'
+          git add last_id.txt count.txt
+          git commit -m "update" || exit 0
+          git push
