@@ -19,6 +19,6 @@ jobs:
         run: |
           git config --global user.name 'Bot'
           git config --global user.email 'bot@bot.com'
-          git add last_id.txt count.txt
+          git add last_id.txt total_count.txt last_reset_week.txt
           git commit -m "update" || exit 0
           git push
